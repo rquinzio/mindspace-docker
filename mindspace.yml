@@ -6,10 +6,10 @@ services:
 #####
 
   kanban-postgres:
-    image: "postgres:9.6-alpine"
+    image: postgres:9.6-alpine
     container_name: kanban-postgres
     networks:
-      agile-workspace_kanban-stack:
+      mindspace_kanban-stack:
     volumes:
       - kanban-data:/var/lib/postgresql/data
     ports:
@@ -20,10 +20,10 @@ services:
       - POSTGRES_PASSWORD=kanban
 
   kanban-app:
-    image: kanban-stack-app
+    image: rquinzio/kanban-stack-app
     container_name: kanban-app
     networks:
-      agile-workspace_kanban-stack:
+      mindspace_kanban-stack:
     environment:
       - DB_SERVER=kanban-postgres
       - POSTGRES_DB=kanban
@@ -33,10 +33,10 @@ services:
       - 8080
 
   kanban-ui:
-    image: kanban-stack-ui
+    image: rquinzio/kanban-stack-ui
     container_name: kanban-ui
     networks:
-      agile-workspace_kanban-stack:
+      mindspace_kanban-stack:
     ports:
       - 4000:80
 
@@ -45,10 +45,10 @@ services:
 ######
 
   whiteboard-app:
-    image: 'lovasoa/wbo'
+    image: lovasoa/wbo
     container_name: whiteboard-ui
     networks:
-      agile-workspace_whiteboard:
+      mindspace_whiteboard:
     ports:
       - 4100:80
 
@@ -57,10 +57,10 @@ services:
 ######
 
   mindmaps-app:
-    image: 'rquinzio/mindmaps-docker'
+    image: rquinzio/mindmaps-docker
     container_name: mindmaps-ui
     networks:
-      agile-workspace_mindmaps:
+      mindspace_mindmaps:
     ports:
       - 4200:80
 
@@ -68,6 +68,6 @@ volumes:
   kanban-data:
 
 networks:
-  agile-workspace_kanban-stack:
-  agile-workspace_whiteboard:
-  agile-workspace_mindmaps:
+  mindspace_kanban-stack:
+  mindspace_whiteboard:
+  mindspace_mindmaps:
