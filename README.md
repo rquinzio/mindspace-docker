@@ -5,9 +5,9 @@ Based on [wkrzywiec](https://github.com/wkrzywiec/kanban-board) work, but modifi
 
 ## Usage
 Run:
-''
+```
 docker-compose -d -f mindspace.yml up
-''
+```
 
 Connect to localhost:4000 for Kanban, localhost:4100 for Whiteboard, localhost:4200 for Minmaps.
 
